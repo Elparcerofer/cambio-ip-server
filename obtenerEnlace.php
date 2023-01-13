@@ -18,7 +18,6 @@ $empresa = $data['EMP'];
 
 // $empresa = 'CISLEMA';
 
-
 $statement = $conexion->prepare("CALL obtenerIP(?)");
 $statement->bind_param("s",$empresa);
 
@@ -33,7 +32,7 @@ if($resultSet = $statement->get_result()){
     }
 }
 
-echo json_encode($ip, JSON_UNESCAPED_UNICODE);
+echo json_encode($ip[0]['direccion_ip'], JSON_UNESCAPED_UNICODE);
 $statement->close();
 $conexion->close();
 ?>
